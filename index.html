@@ -98,8 +98,42 @@
                 </div>
             </div>
         </section>
-    </div>
 
+        <!-- Selection summary -->
+        <section class="mb-5 fade-in-up stagger-2">
+            <div class="selection-summary" id="selectionSummary" aria-live="polite">
+                <span style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun dé sélectionné</span>
+            </div>
+        </section>
+
+        <!-- Roll button -->
+        <section class="text-center mb-6 fade-in-up stagger-2">
+            <button class="roll-btn" id="rollBtn" disabled aria-label="Lancer les dés">LANCER</button>
+        </section>
+
+        <!-- Dice arena -->
+        <section class="mb-5 fade-in-up stagger-3">
+            <div class="dice-arena" id="diceArena" aria-live="polite">
+                <p style="color: var(--muted);">Sélectionnez vos dés pour commencer...</p>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section class="text-center mb-8 fade-in-up stagger-3">
+            <div id="resultArea" aria-live="polite"></div>
+        </section>
+
+        <!-- History -->
+        <section class="fade-in-up stagger-3">
+            <div class="history-header">
+                <h2 class="font-display text-xs uppercase tracking-widest" style="color: var(--muted);">Historique</h2>
+                <button class="clear-history-btn" id="clearHistory" aria-label="Effacer l'historique">Effacer</button>
+            </div>
+            <div id="history" class="max-h-52 overflow-y-auto">
+                <p style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun jet pour le moment</p>
+            </div>
+        </section>
+    </div>
 </main>
 
 <script src="main.js"></script>
