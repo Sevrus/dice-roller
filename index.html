@@ -1,10 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Crypte des Dés</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="bg-atmosphere"></div>
+<div class="bg-noise"></div>
 
+<main class="min-h-screen px-4 py-8 md:py-10">
+    <div class="max-w-3xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8 fade-in-up">
+            <h1 class="font-display text-3xl md:text-4xl font-black tracking-wider mb-1" style="color: var(--fg);">
+                LA CRYPTE DES DÉS
+            </h1>
+            <p class="text-sm" style="color: var(--muted);">Forgez votre destin, un jet à la fois</p>
+        </header>
+
+        <!-- Dice selectors - Single Line -->
+        <section class="mb-5 fade-in-up stagger-1">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-display text-xs uppercase tracking-widest" style="color: var(--muted);">Sélection</h2>
+                <button class="clear-btn" id="clearSelection" aria-label="Réinitialiser">Réinitialiser</button>
+            </div>
+
+            <div class="dice-selectors-wrapper" role="group" aria-label="Sélection des dés">
+                <div class="dice-selector" data-dice="3">
+                    <span class="dice-label">D3</span>
+                    <div class="dice-counter">
+                        <button aria-label="Retirer un D3">−</button>
+                        <span>0</span>
+                        <button aria-label="Ajouter un D3">+</button>
+                    </div>
+                </div>
+                <div class="dice-selector" data-dice="4">
+                    <span class="dice-label">D4</span>
+                    <div class="dice-counter">
+                        <button aria-label="Retirer un D4">−</button>
+                        <span>0</span>
+                        <button aria-label="Ajouter un D4">+</button>
+                    </div>
+                </div>
+                <div class="dice-selector" data-dice="6">
+                    <span class="dice-label">D6</span>
+                    <div class="dice-counter">
+                        <button aria-label="Retirer un D6">−</button>
+                        <span>0</span>
+                        <button aria-label="Ajouter un D6">+</button>
+                    </div>
+                </div>
+                <div class="dice-selector" data-dice="8">
+                    <span class="dice-label">D8</span>
+                    <div class="dice-counter">
+                        <button aria-label="Retirer un D8">−</button>
+                        <span>0</span>
+                        <button aria-label="Ajouter un D8">+</button>
+                    </div>
+                </div>
+                <div class="dice-selector" data-dice="10">
+                    <span class="dice-label">D10</span>
+                    <div class="dice-counter">
+                        <button aria-label="Retirer un D10">−</button>
+                        <span>0</span>
+                        <button aria-label="Ajouter un D10">+</button>
+                    </div>
+                </div>
+                <div class="dice-selector" data-dice="12">
+                    <span class="dice-label">D12</span>
+                    <div class="dice-counter">
+                        <button aria-label="Retirer un D12">−</button>
+                        <span>0</span>
+                        <button aria-label="Ajouter un D12">+</button>
+                    </div>
+                </div>
+                <div class="dice-selector" data-dice="20">
+                    <span class="dice-label">D20</span>
+                    <div class="dice-counter">
+                        <button aria-label="Retirer un D20">−</button>
+                        <span>0</span>
+                        <button aria-label="Ajouter un D20">+</button>
+                    </div>
+                </div>
+                <div class="dice-selector" data-dice="100">
+                    <span class="dice-label">D100</span>
+                    <div class="dice-counter">
+                        <button aria-label="Retirer un D100">−</button>
+                        <span>0</span>
+                        <button aria-label="Ajouter un D100">+</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</main>
+
+<script src="main.js"></script>
 </body>
 </html>
