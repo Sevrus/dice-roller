@@ -40,7 +40,7 @@ diceSelectors.forEach(selector => {
     const type = parseInt(selector.dataset.dice);
     const [decreaseBtn, increaseBtn] = selector.querySelectorAll('.dice-counter button');
 
-    decreaseBtn.addEventListener('click', () => {
+    decreaseBtn.addEventListener("click", () => {
         if (diceSelection[type] > 0) {
             diceSelection[type]--;
             updateDiceSelectorUI(type);
@@ -48,7 +48,7 @@ diceSelectors.forEach(selector => {
         }
     });
 
-    increaseBtn.addEventListener('click', () => {
+    increaseBtn.addEventListener("click", () => {
         if (getTotalDice() < 30) {
             diceSelection[type]++;
             updateDiceSelectorUI(type);
@@ -56,3 +56,110 @@ diceSelectors.forEach(selector => {
         }
     });
 });
+
+clearSelectionBtn.addEventListener("click", () => {
+    Object.keys(diceSelection).forEach(type => {
+        diceSelection[type] = 0;
+        updateDiceSelectorUI(type);
+    });
+    updateSelectionSummary();
+    diceArena.innerHTML = '<p style="color: var(--muted);">Sélectionnez vos dés pour commencer...</p>';
+    resultArea.innerHTML = "";
+});
+
+function rollDice(max) {
+    return Math.floor(Math.random() * max) + 1;
+}
+
+function createDiceElement(value, type, index) {
+    const dice = document.createElement("div");
+    dice.className = "dice";
+    dice.innerHTML = `
+        <div class="dice-inner">
+          <div class="dice-face">
+            ${value}<span class="dice-type-badge">D${type}</span>
+          </div>
+        </div>`;
+    dice.style.animationDelay = `${index * 0.07}s`;
+    return dice;
+}
+
+async function performRoll() {
+    if (isRolling) return;
+    isRolling = true;
+    rollBtn.disabled = true;
+
+    diceArena.innerHTML = '';
+    resultArea.innerHTML = '';
+
+    const rollConfig = [];
+    Object.entries(diceSelection).forEach(([type, count]) => {
+        for (let i = 0; i < count; i++) rollConfig.push(parseInt(type));
+    });
+
+    const diceElements = [];
+    const results = [];
+
+    rollConfig.forEach((type, index) => {
+        const dice = createDiceElement(rollDice(type), type, index);
+        diceArena.appendChild(dice);
+        diceElements.push({ element: dice, type });
+        results.push({ value: rollDice(type), type });
+    });
+
+    diceElements.forEach(item => item.element.classList.add('rolling'));
+    await new Promise(r => setTimeout(r, 600));
+
+    diceElements.forEach((item, i) => {
+        item.element.classList.remove('rolling');
+        item.element.querySelector('.dice-face').firstChild.textContent = results[i].value;
+        item.element.classList.add('arrived');
+    });
+
+    const total = results.reduce((sum, r) => sum + r.value, 0);
+    const breakdown = buildBreakdown(results);
+
+    resultArea.innerHTML = `
+        <div class="result-total">${total}</div>
+        <div class="result-breakdown">${breakdown}</div>`;
+
+    addToHistory(results, total);
+    isRolling = false;
+    rollBtn.disabled = false;
+}
+
+function buildBreakdown(results) {
+    const grouped = {};
+    results.forEach(r => {
+        if (!grouped[r.type]) grouped[r.type] = [];
+        grouped[r.type].push(r.value);
+    });
+    return Object.entries(grouped)
+        .map(([type, values]) => `${values.length}D${type}: [${values.join(' + ')}]`)
+        .join(' | ');
+}
+
+function addToHistory(results, total) {
+    const grouped = {};
+    results.forEach(r => { grouped[r.type] = (grouped[r.type] || 0) + 1; });
+    const rollStr = Object.entries(grouped).map(([t, c]) => `${c}D${t}`).join(' + ');
+    const valuesStr = results.map(r => r.value).join(' + ');
+
+    history.unshift({ rollStr, valuesStr, total });
+    if (history.length > MAX_HISTORY) history.pop();
+    renderHistory();
+}
+
+function renderHistory() {
+    historyContainer.innerHTML = history.length === 0
+        ? '<p style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun jet pour le moment</p>'
+        : history.map(item => `
+            <div class="history-item">
+              <div>
+                <span class="history-roll">${item.rollStr}</span>
+                <span style="color: var(--border); margin: 0 0.5rem;">|</span>
+                <span style="color: var(--muted); font-size: 0.6875rem;">${item.valuesStr}</span>
+              </div>
+              <span class="history-result">${item.total}</span>
+            </div>`).join('');
+}
