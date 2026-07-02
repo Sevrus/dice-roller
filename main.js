@@ -68,7 +68,9 @@ clearSelectionBtn.addEventListener("click", () => {
 });
 
 function rollDice(max) {
-    return Math.floor(Math.random() * max) + 1;
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return (array[0] % max) + 1;
 }
 
 function createDiceElement(value, type, index) {
