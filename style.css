@@ -445,7 +445,7 @@ button:focus-visible {
 }
 
 .layout-wrapper {
-    max-width: 48rem;
+    max-width: 63rem; /* 992px 48REM à l'origine */
     margin: 0 auto;
 }
 

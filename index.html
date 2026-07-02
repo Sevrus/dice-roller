@@ -16,6 +16,16 @@
 
 <main class="main-container">
     <div class="layout-wrapper">
+        <div style="position: absolute; top: 1rem; right: 1rem;">
+            <select id="langSelector" style="background: var(--bg-secondary); color: var(--fg); border: 1px solid var(--border); border-radius: 4px; padding: 0.375rem 0.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; cursor: pointer; outline: none;">
+                <option value="fr">🇫🇷 FR</option>
+                <option value="en">🇬🇧 EN</option>
+                <option value="es">🇪🇸 ES</option>
+                <option value="pt">🇵🇹 PT</option>
+                <option value="de">🇩🇪 DE</option>
+            </select>
+        </div>
+        
         <!-- Header -->
         <header class="text-center section-spacing-lg fade-in-up">
             <svg class="logo-svg theme-dark-asset" viewBox="0 0 120 120" width="56" height="56" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.5rem;">
@@ -148,7 +158,7 @@
         <footer class="app-footer fade-in-up stagger-3">
             <div class="footer-content">
                 <p class="copyright">&copy; 2026 Pixel Perfekt. Tous droits réservés.</p>
-                
+
                 <a href="#" target="_blank" rel="noopener noreferrer" class="support-link">
                     <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>

@@ -1,0 +1,67 @@
+{
+  "fr": {
+    "title": "LA CRYPTE DES DÉS",
+    "subtitle": "Forgez votre destin, un jet à la fois",
+    "selection": "Sélection",
+    "reset": "Réinitialiser",
+    "emptySelection": "Aucun dé sélectionné",
+    "roll": "LANCER",
+    "arenaEmpty": "Sélectionnez vos dés pour commencer...",
+    "history": "Historique",
+    "clearHistory": "Effacer",
+    "emptyHistory": "Aucun jet pour le moment",
+    "support": "Soutenir le projet"
+  },
+  "en": {
+    "title": "THE DICE CRYPT",
+    "subtitle": "Forge your destiny, one roll at a time",
+    "selection": "Selection",
+    "reset": "Reset",
+    "emptySelection": "No dice selected",
+    "roll": "ROLL",
+    "arenaEmpty": "Select your dice to begin...",
+    "history": "History",
+    "clearHistory": "Clear",
+    "emptyHistory": "No rolls yet",
+    "support": "Support the project"
+  },
+  "es": {
+    "title": "LA CRIPTA DE LOS DADOS",
+    "subtitle": "Forja tu destino, una tirada a la vez",
+    "selection": "Selección",
+    "reset": "Restablecer",
+    "emptySelection": "Ningún dado seleccionado",
+    "roll": "LANZAR",
+    "arenaEmpty": "Selecciona tus dados para empezar...",
+    "history": "Historial",
+    "clearHistory": "Borrar",
+    "emptyHistory": "Ninguna tirada todavía",
+    "support": "Apoyar el proyecto"
+  },
+  "pt": {
+    "title": "A CRIPTA DOS DADOS",
+    "subtitle": "Forje o seu destino, um lançamento de cada vez",
+    "selection": "Seleção",
+    "reset": "Redefinir",
+    "emptySelection": "Nenhum dado selecionado",
+    "roll": "LANÇAR",
+    "arenaEmpty": "Selecione seus dados para começar...",
+    "history": "Histórico",
+    "clearHistory": "Limpar",
+    "emptyHistory": "Nenhum lançamento ainda",
+    "support": "Apoiar o projeto"
+  },
+  "de": {
+    "title": "DIE WÜRFELKRYPTA",
+    "subtitle": "Schmiede dein Schicksal, ein Wurf nach dem anderen",
+    "selection": "Auswahl",
+    "reset": "Zurücksetzen",
+    "emptySelection": "Keine Würfel ausgewählt",
+    "roll": "WÜRFELN",
+    "arenaEmpty": "Wähle deine Würfel, um zu beginnen...",
+    "history": "Verlauf",
+    "clearHistory": "Löschen",
+    "emptyHistory": "Noch keine Würfe",
+    "support": "Projekt unterstützen"
+  }
+}
