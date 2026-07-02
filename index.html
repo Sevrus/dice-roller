@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Crypte des Dés</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,20 +13,20 @@
 <div class="bg-atmosphere"></div>
 <div class="bg-noise"></div>
 
-<main class="min-h-screen px-4 py-8 md:py-10">
-    <div class="max-w-3xl mx-auto">
+<main class="main-container">
+    <div class="layout-wrapper">
         <!-- Header -->
-        <header class="text-center mb-8 fade-in-up">
-            <h1 class="font-display text-3xl md:text-4xl font-black tracking-wider mb-1" style="color: var(--fg);">
+        <header class="text-center section-spacing-lg fade-in-up">
+            <h1 class="main-title">
                 LA CRYPTE DES DÉS
             </h1>
-            <p class="text-sm" style="color: var(--muted);">Forgez votre destin, un jet à la fois</p>
+            <p class="subtitle">Forgez votre destin, un jet à la fois</p>
         </header>
 
         <!-- Dice selectors - Single Line -->
-        <section class="mb-5 fade-in-up stagger-1">
-            <div class="flex justify-between items-center mb-3">
-                <h2 class="font-display text-xs uppercase tracking-widest" style="color: var(--muted);">Sélection</h2>
+        <section class="section-spacing fade-in-up stagger-1">
+            <div class="flex-between">
+                <h2 class="section-title">Sélection</h2>
                 <button class="clear-btn" id="clearSelection" aria-label="Réinitialiser">Réinitialiser</button>
             </div>
 
@@ -100,36 +99,36 @@
         </section>
 
         <!-- Selection summary -->
-        <section class="mb-5 fade-in-up stagger-2">
+        <section class="section-spacing fade-in-up stagger-2">
             <div class="selection-summary" id="selectionSummary" aria-live="polite">
                 <span style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun dé sélectionné</span>
             </div>
         </section>
 
         <!-- Roll button -->
-        <section class="text-center mb-6 fade-in-up stagger-2">
+        <section class="text-center section-spacing-lg fade-in-up stagger-2">
             <button class="roll-btn" id="rollBtn" disabled aria-label="Lancer les dés">LANCER</button>
         </section>
 
         <!-- Dice arena -->
-        <section class="mb-5 fade-in-up stagger-3">
+        <section class="section-spacing fade-in-up stagger-3">
             <div class="dice-arena" id="diceArena" aria-live="polite">
                 <p style="color: var(--muted);">Sélectionnez vos dés pour commencer...</p>
             </div>
         </section>
 
         <!-- Results -->
-        <section class="text-center mb-8 fade-in-up stagger-3">
+        <section class="text-center section-spacing-lg fade-in-up stagger-3">
             <div id="resultArea" aria-live="polite"></div>
         </section>
 
         <!-- History -->
         <section class="fade-in-up stagger-3">
-            <div class="history-header">
-                <h2 class="font-display text-xs uppercase tracking-widest" style="color: var(--muted);">Historique</h2>
+            <div class="flex-between">
+                <h2 class="section-title">Historique</h2>
                 <button class="clear-history-btn" id="clearHistory" aria-label="Effacer l'historique">Effacer</button>
             </div>
-            <div id="history" class="max-h-52 overflow-y-auto">
+            <div id="history" class="history-container">
                 <p style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun jet pour le moment</p>
             </div>
         </section>
