@@ -1,0 +1,515 @@
+:root {
+    --bg: #0a0908;
+    --bg-secondary: #1a1814;
+    --fg: #f4f0e8;
+    --muted: #6b635a;
+    --accent: #d4a03c;
+    --accent-glow: #f4c542;
+    --card: #151310;
+    --border: #2a2520;
+    --danger: #a64b4b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Space Grotesk", sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.font-display {
+    font-family: "Cinzel", serif;
+}
+
+.bg-atmosphere {
+    position: fixed;
+    inset: 0;
+    background:
+            radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 160, 60, 0.08) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 40% at 20% 100%, rgba(212, 160, 60, 0.05) 0%, transparent 40%),
+            radial-gradient(ellipse 60% 40% at 80% 100%, rgba(180, 120, 40, 0.05) 0%, transparent 40%),
+            var(--bg);
+    z-index: -2;
+}
+
+.bg-noise {
+    position: fixed;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Dice selector container - single line */
+.dice-selectors-wrapper {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.dice-selectors-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.dice-selectors-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dice-selectors-wrapper::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+/* Dice selector cards */
+.dice-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.625rem 0.75rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    min-width: 72px;
+}
+
+.dice-selector.has-dice {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(212, 160, 60, 0.15) 0%, var(--card) 100%);
+    box-shadow: 0 0 15px rgba(212, 160, 60, 0.12);
+}
+
+.dice-label {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--muted);
+    transition: color 0.3s ease;
+}
+
+.dice-selector.has-dice .dice-label {
+    color: var(--accent);
+}
+
+.dice-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.dice-counter button {
+    width: 26px;
+    height: 26px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.dice-counter button:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.dice-counter button:active {
+    transform: scale(0.92);
+}
+
+.dice-counter span {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Roll button */
+.roll-btn {
+    position: relative;
+    padding: 0.875rem 2.5rem;
+    background: linear-gradient(135deg, var(--accent) 0%, #b8860b 100%);
+    color: var(--bg);
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.roll-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.roll-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212, 160, 60, 0.4);
+}
+
+.roll-btn:hover:not(:disabled)::before { left: 100%; }
+
+.roll-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Clear buttons */
+.clear-btn {
+    padding: 0.375rem 0.75rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8125rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: rgba(166, 75, 75, 0.1);
+}
+
+.clear-history-btn {
+    padding: 0.25rem 0.5rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clear-history-btn:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+/* Dice arena */
+.dice-arena {
+    min-height: 260px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: radial-gradient(ellipse at center, rgba(212, 160, 60, 0.04) 0%, transparent 70%);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+/* Individual dice */
+.dice {
+    width: 65px;
+    height: 65px;
+    perspective: 600px;
+}
+
+.dice-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.dice.rolling .dice-inner {
+    animation: roll 0.55s ease-out;
+}
+
+@keyframes roll {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    25% { transform: rotateX(180deg) rotateY(90deg) rotateZ(45deg); }
+    50% { transform: rotateX(360deg) rotateY(180deg) rotateZ(90deg); }
+    75% { transform: rotateX(540deg) rotateY(270deg) rotateZ(180deg); }
+    100% { transform: rotateX(720deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+.dice-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cinzel", serif;
+    font-weight: 900;
+    font-size: 1.375rem;
+    background: linear-gradient(145deg, #f4f0e8 0%, #d4d0c8 100%);
+    color: var(--bg);
+    border-radius: 10px;
+    box-shadow:
+            inset 0 2px 4px rgba(255,255,255,0.5),
+            inset 0 -2px 4px rgba(0,0,0,0.1),
+            0 4px 10px rgba(0,0,0,0.25);
+    backface-visibility: hidden;
+}
+
+.dice-type-badge {
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.dice.arrived .dice-face { animation: bounce 0.35s ease; }
+
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+/* Results */
+.result-total {
+    font-family: "Cinzel", serif;
+    font-size: 2.75rem;
+    font-weight: 900;
+    color: var(--accent);
+    text-shadow: 0 0 25px rgba(212, 160, 60, 0.4);
+}
+
+.result-breakdown {
+    color: var(--muted);
+    font-size: 0.8125rem;
+    margin-top: 0.375rem;
+}
+
+/* Selection summary */
+.selection-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    justify-content: center;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    min-height: 46px;
+    align-items: center;
+}
+
+.selection-tag {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.8125rem;
+}
+
+/* History */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 0.875rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 0.375rem;
+    animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.history-roll {
+    color: var(--muted);
+    font-size: 0.8125rem;
+}
+
+.history-result {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+/* Entrance animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stagger-1 {
+    animation-delay: 0.1s;
+}
+
+.stagger-2 {
+    animation-delay: 0.2s;
+}
+
+.stagger-3 {
+    animation-delay: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dice.rolling .dice-inner, .fade-in-up, .history-item, .dice.arrived .dice-face {
+        animation: none;
+    }
+    .fade-in-up {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+/* Main layout */
+.main-container {
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+.layout-wrapper {
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+/* Spacing */
+.section-spacing {
+    margin-bottom: 1.25rem;
+}
+
+.section-spacing-lg {
+    margin-bottom: 2rem;
+}
+
+/* Alignments */
+.text-center {
+    text-align: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+/* Header Typography */
+.main-title {
+    font-family: "Cinzel", serif;
+    font-weight: 900;
+    font-size: 1.875rem;
+    letter-spacing: 0.05em;
+    color: var(--fg);
+    margin: 0 0 0.25rem 0;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* Section Title */
+.section-title {
+    font-family: "Cinzel", serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* History Container */
+.history-container {
+    max-height: 13rem;
+    overflow-y: auto;
+}
+
+/* Media query */
+@media (min-width: 768px) {
+    .main-container {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .main-title {
+        font-size: 2.25rem;
+    }
+}
