@@ -1,0 +1,12 @@
+<svg class="logo-svg theme-dark-asset" viewBox="0 0 120 120" width="48" height="48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Ligne de sol et Arche de la crypte -->
+    <path d="M20,110 V55 C20,30 40,10 60,10 C80,10 100,30 100,55 V110" stroke="#f4f0e8" stroke-width="6"/>
+    <line x1="10" y1="110" x2="110" y2="110" stroke="#f4f0e8" stroke-width="6"/>
+
+    <!-- Dé 20 faces au centre -->
+    <polygon points="60,35 35,75 85,75" stroke="#d4a03c" stroke-width="5"/>
+    <polygon points="60,105 35,75 85,75" stroke="#d4a03c" stroke-width="5"/>
+    <line x1="60" y1="35" x2="60" y2="75" stroke="#d4a03c" stroke-width="4"/>
+    <line x1="35" y1="75" x2="60" y2="105" stroke="#d4a03c" stroke-width="4"/>
+    <line x1="85" y1="75" x2="60" y2="105" stroke="#d4a03c" stroke-width="4"/>
+</svg>

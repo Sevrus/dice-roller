@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Crypte des Dés</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -17,6 +18,16 @@
     <div class="layout-wrapper">
         <!-- Header -->
         <header class="text-center section-spacing-lg fade-in-up">
+            <svg class="logo-svg theme-dark-asset" viewBox="0 0 120 120" width="56" height="56" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.5rem;">
+                <path d="M20,110 V55 C20,30 40,10 60,10 C80,10 100,30 100,55 V110" stroke="#f4f0e8" stroke-width="6"/>
+                <line x1="10" y1="110" x2="110" y2="110" stroke="#f4f0e8" stroke-width="6"/>
+                <polygon points="60,35 35,75 85,75" stroke="#d4a03c" stroke-width="5"/>
+                <polygon points="60,105 35,75 85,75" stroke="#d4a03c" stroke-width="5"/>
+                <line x1="60" y1="35" x2="60" y2="75" stroke="#d4a03c" stroke-width="4"/>
+                <line x1="35" y1="75" x2="60" y2="105" stroke="#d4a03c" stroke-width="4"/>
+                <line x1="85" y1="75" x2="60" y2="105" stroke="#d4a03c" stroke-width="4"/>
+            </svg>
+
             <h1 class="main-title">
                 LA CRYPTE DES DÉS
             </h1>
@@ -132,6 +143,24 @@
                 <p style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun jet pour le moment</p>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer class="app-footer fade-in-up stagger-3">
+            <div class="footer-content">
+                <p class="copyright">&copy; 2026 Pixel Perfekt. Tous droits réservés.</p>
+                
+                <a href="#" target="_blank" rel="noopener noreferrer" class="support-link">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                        <line x1="6" y1="1" x2="6" y2="4"></line>
+                        <line x1="10" y1="1" x2="10" y2="4"></line>
+                        <line x1="14" y1="1" x2="14" y2="4"></line>
+                    </svg>
+                    Soutenir le projet
+                </a>
+            </div>
+        </footer>
     </div>
 </main>
 

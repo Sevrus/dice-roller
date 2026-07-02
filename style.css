@@ -513,3 +513,58 @@ button:focus-visible {
         font-size: 2.25rem;
     }
 }
+
+/* Footer & Crédits */
+
+.app-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.support-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.4rem 0.875rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-secondary);
+    transition: all 0.25s ease;
+}
+
+.support-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(212, 160, 60, 0.05);
+    box-shadow: 0 0 10px rgba(212, 160, 60, 0.1);
+}
+
+.support-link:active {
+    transform: scale(0.98);
+}
+
+@media (min-width: 640px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
