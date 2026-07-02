@@ -89,8 +89,8 @@ async function performRoll() {
     isRolling = true;
     rollBtn.disabled = true;
 
-    diceArena.innerHTML = '';
-    resultArea.innerHTML = '';
+    diceArena.innerHTML = "";
+    resultArea.innerHTML = "";
 
     const rollConfig = [];
     Object.entries(diceSelection).forEach(([type, count]) => {
@@ -107,13 +107,13 @@ async function performRoll() {
         results.push({ value: rollDice(type), type });
     });
 
-    diceElements.forEach(item => item.element.classList.add('rolling'));
+    diceElements.forEach(item => item.element.classList.add("rolling"));
     await new Promise(r => setTimeout(r, 600));
 
     diceElements.forEach((item, i) => {
-        item.element.classList.remove('rolling');
-        item.element.querySelector('.dice-face').firstChild.textContent = results[i].value;
-        item.element.classList.add('arrived');
+        item.element.classList.remove("rolling");
+        item.element.querySelector(".dice-face").firstChild.textContent = results[i].value;
+        item.element.classList.add("arrived");
     });
 
     const total = results.reduce((sum, r) => sum + r.value, 0);
@@ -135,15 +135,15 @@ function buildBreakdown(results) {
         grouped[r.type].push(r.value);
     });
     return Object.entries(grouped)
-        .map(([type, values]) => `${values.length}D${type}: [${values.join(' + ')}]`)
-        .join(' | ');
+        .map(([type, values]) => `${values.length}D${type}: [${values.join(" + ")}]`)
+        .join(" | ");
 }
 
 function addToHistory(results, total) {
     const grouped = {};
     results.forEach(r => { grouped[r.type] = (grouped[r.type] || 0) + 1; });
-    const rollStr = Object.entries(grouped).map(([t, c]) => `${c}D${t}`).join(' + ');
-    const valuesStr = results.map(r => r.value).join(' + ');
+    const rollStr = Object.entries(grouped).map(([t, c]) => `${c}D${t}`).join(" + ");
+    const valuesStr = results.map(r => r.value).join(" + ");
 
     history.unshift({ rollStr, valuesStr, total });
     if (history.length > MAX_HISTORY) history.pop();
@@ -161,5 +161,21 @@ function renderHistory() {
                 <span style="color: var(--muted); font-size: 0.6875rem;">${item.valuesStr}</span>
               </div>
               <span class="history-result">${item.total}</span>
-            </div>`).join('');
+            </div>`).join("");
 }
+
+clearHistoryBtn.addEventListener("click", () => {
+    history.length = 0;
+    renderHistory();
+});
+
+rollBtn.addEventListener("click", performRoll);
+
+document.addEventListener("keydown", (e) => {
+    if (e.code === "Space" && !isRolling &&
+        !["INPUT", "BUTTON"].includes(document.activeElement.tagName) &&
+        !rollBtn.disabled) {
+        e.preventDefault();
+        performRoll();
+    }
+});
