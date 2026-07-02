@@ -1,3 +1,54 @@
+let i18n = {};
+let currentLang = 'fr';
+
+// initialize translations on load
+async function loadTranslations() {
+    try {
+        const response = await fetch('i18n.json');
+        if (!response.ok) throw new Error("Erreur réseau");
+
+        i18n = await response.json();
+
+        const browserLang = navigator.language.substring(0, 2);
+        if (i18n[browserLang]) {
+            currentLang = browserLang;
+            document.getElementById('langSelector').value = currentLang;
+        }
+
+        setLanguage(currentLang);
+    } catch (error) {
+        console.error("Impossible de charger les traductions :", error);
+    }
+}
+
+function setLanguage(lang) {
+    if (!i18n[lang]) return;
+    currentLang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang][key]) {
+            el.textContent = i18n[lang][key];
+        }
+    });
+
+    if (selectionSummary.innerHTML.includes('italic')) {
+        selectionSummary.innerHTML = `<span style="color: var(--muted); font-style: italic; font-size: 0.875rem;">${i18n[lang]["emptySelection"]}</span>`;
+    }
+
+    if (getTotalDice() === 0) {
+        diceArena.innerHTML = `<p style="color: var(--muted);">${i18n[lang]["arenaEmpty"]}</p>`;
+    }
+
+    renderHistory();
+}
+
+loadTranslations();
+
+document.getElementById('langSelector').addEventListener('change', (e) => {
+    setLanguage(e.target.value);
+});
+
 // State initialization
 const diceSelection = { 3: 0, 4: 0, 6: 0, 8: 0, 10: 0, 12: 0, 20: 0, 100: 0 };
 let isRolling = false;
@@ -19,9 +70,11 @@ function updateSelectionSummary() {
     Object.entries(diceSelection).forEach(([type, count]) => {
         if (count > 0) selected.push(`${count}D${type}`);
     });
+
     selectionSummary.innerHTML = selected.length === 0
-        ? '<span style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun dé sélectionné</span>'
+        ? `<span style="color: var(--muted); font-style: italic; font-size: 0.875rem;">${i18n[currentLang]["emptySelection"]}</span>`
         : selected.map(s => `<span class="selection-tag">${s}</span>`).join('');
+
     rollBtn.disabled = selected.length === 0;
 }
 
@@ -63,7 +116,8 @@ clearSelectionBtn.addEventListener("click", () => {
         updateDiceSelectorUI(type);
     });
     updateSelectionSummary();
-    diceArena.innerHTML = '<p style="color: var(--muted);">Sélectionnez vos dés pour commencer...</p>';
+
+    diceArena.innerHTML = `<p style="color: var(--muted);">${i18n[currentLang]["arenaEmpty"]}</p>`;
     resultArea.innerHTML = "";
 });
 
@@ -154,7 +208,7 @@ function addToHistory(results, total) {
 
 function renderHistory() {
     historyContainer.innerHTML = history.length === 0
-        ? '<p style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun jet pour le moment</p>'
+        ? `<p style="color: var(--muted); font-style: italic; font-size: 0.875rem;">${i18n[currentLang]["emptyHistory"]}</p>`
         : history.map(item => `
             <div class="history-item">
               <div>

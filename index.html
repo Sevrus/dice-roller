@@ -25,7 +25,7 @@
                 <option value="de">🇩🇪 DE</option>
             </select>
         </div>
-        
+
         <!-- Header -->
         <header class="text-center section-spacing-lg fade-in-up">
             <svg class="logo-svg theme-dark-asset" viewBox="0 0 120 120" width="56" height="56" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.5rem;">
@@ -38,17 +38,17 @@
                 <line x1="85" y1="75" x2="60" y2="105" stroke="#d4a03c" stroke-width="4"/>
             </svg>
 
-            <h1 class="main-title">
+            <h1 class="main-title" data-i18n="title">
                 LA CRYPTE DES DÉS
             </h1>
-            <p class="subtitle">Forgez votre destin, un jet à la fois</p>
+            <p class="subtitle" data-i18n="subtitle">Forgez votre destin, un jet à la fois</p>
         </header>
 
         <!-- Dice selectors - Single Line -->
         <section class="section-spacing fade-in-up stagger-1">
             <div class="flex-between">
-                <h2 class="section-title">Sélection</h2>
-                <button class="clear-btn" id="clearSelection" aria-label="Réinitialiser">Réinitialiser</button>
+                <h2 class="section-title" data-i18n="selection">Sélection</h2>
+                <button class="clear-btn" id="clearSelection" aria-label="Réinitialiser" data-i18n="reset">Réinitialiser</button>
             </div>
 
             <div class="dice-selectors-wrapper" role="group" aria-label="Sélection des dés">
@@ -128,13 +128,13 @@
 
         <!-- Roll button -->
         <section class="text-center section-spacing-lg fade-in-up stagger-2">
-            <button class="roll-btn" id="rollBtn" disabled aria-label="Lancer les dés">LANCER</button>
+            <button class="roll-btn" id="rollBtn" disabled aria-label="Lancer les dés" data-i18n="roll">LANCER</button>
         </section>
 
         <!-- Dice arena -->
         <section class="section-spacing fade-in-up stagger-3">
             <div class="dice-arena" id="diceArena" aria-live="polite">
-                <p style="color: var(--muted);">Sélectionnez vos dés pour commencer...</p>
+                <p style="color: var(--muted);" data-i18n="arenaEmpty">Sélectionnez vos dés pour commencer...</p>
             </div>
         </section>
 
@@ -146,18 +146,18 @@
         <!-- History -->
         <section class="fade-in-up stagger-3">
             <div class="flex-between">
-                <h2 class="section-title">Historique</h2>
-                <button class="clear-history-btn" id="clearHistory" aria-label="Effacer l'historique">Effacer</button>
+                <h2 class="section-title" data-i18n="history">Historique</h2>
+                <button class="clear-history-btn" id="clearHistory" aria-label="Effacer l'historique" data-i18n="clearHistory">Effacer</button>
             </div>
             <div id="history" class="history-container">
-                <p style="color: var(--muted); font-style: italic; font-size: 0.875rem;">Aucun jet pour le moment</p>
+                <p style="color: var(--muted); font-style: italic; font-size: 0.875rem;" data-i18n="emptyHistory">Aucun jet pour le moment</p>
             </div>
         </section>
 
         <!-- Footer -->
         <footer class="app-footer fade-in-up stagger-3">
             <div class="footer-content">
-                <p class="copyright">&copy; 2026 Pixel Perfekt. Tous droits réservés.</p>
+                <p class="copyright">&copy; 2026 Pixel Perfekt. <span data-i18n="copyright">Tous droits réservés.</span></p>
 
                 <a href="#" target="_blank" rel="noopener noreferrer" class="support-link">
                     <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -167,7 +167,7 @@
                         <line x1="10" y1="1" x2="10" y2="4"></line>
                         <line x1="14" y1="1" x2="14" y2="4"></line>
                     </svg>
-                    Soutenir le projet
+                    <span data-i18n="support">Soutenir le projet</span>
                 </a>
             </div>
         </footer>

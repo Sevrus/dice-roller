@@ -10,7 +10,8 @@
     "history": "Historique",
     "clearHistory": "Effacer",
     "emptyHistory": "Aucun jet pour le moment",
-    "support": "Soutenir le projet"
+    "support": "Soutenir le projet",
+    "copyright": "Tous droits réservés."
   },
   "en": {
     "title": "THE DICE CRYPT",
@@ -23,7 +24,8 @@
     "history": "History",
     "clearHistory": "Clear",
     "emptyHistory": "No rolls yet",
-    "support": "Support the project"
+    "support": "Support the project",
+    "copyright": "All rights reserved."
   },
   "es": {
     "title": "LA CRIPTA DE LOS DADOS",
@@ -36,7 +38,8 @@
     "history": "Historial",
     "clearHistory": "Borrar",
     "emptyHistory": "Ninguna tirada todavía",
-    "support": "Apoyar el proyecto"
+    "support": "Apoyar el proyecto",
+    "copyright": "Todos los derechos reservados."
   },
   "pt": {
     "title": "A CRIPTA DOS DADOS",
@@ -49,7 +52,8 @@
     "history": "Histórico",
     "clearHistory": "Limpar",
     "emptyHistory": "Nenhum lançamento ainda",
-    "support": "Apoiar o projeto"
+    "support": "Apoiar o projet",
+    "copyright": "Todos os direitos reservados."
   },
   "de": {
     "title": "DIE WÜRFELKRYPTA",
@@ -62,6 +66,7 @@
     "history": "Verlauf",
     "clearHistory": "Löschen",
     "emptyHistory": "Noch keine Würfe",
-    "support": "Projekt unterstützen"
+    "support": "Projekt unterstützen",
+    "copyright": "Alle Rechte vorbehalten."
   }
 }
